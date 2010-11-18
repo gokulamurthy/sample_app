@@ -1,0 +1,72 @@
+<%= error_messages_for 'users' %>
+ 
+<!--[form:users]-->
+<p><label for="users_name">Name</label><br/>
+<%= text_field 'users', 'name' %></p>
+ 
+<p><label for="users_hashed_password">Hashed password</label><br/>
+<%= password_field 'users', 'hashed_password' %></p>
+ 
+<p><label for="users_salt">Salt</label><br/>
+<%= text_field 'users', 'salt' %></p>
+ 
+<p><label for="users_fname">Fname</label><br/>
+<%= text_field 'users', 'fname' %></p>
+ 
+<p><label for="users_lname">Lname</label><br/>
+<%= text_field 'users', 'lname' %></p>
+ 
+<p><label for="users_off_name">Off name</label><br/>
+<%= text_field 'users', 'off_name' %></p>
+ 
+<p><label for="users_phone">Phone</label><br/>
+<%= text_field 'users', 'phone' %></p>
+ 
+<p><label for="users_fax">Fax</label><br/>
+<%= text_field 'users', 'fax' %></p>
+ 
+<p><label for="users_email">Email</label><br/>
+<%= text_field 'users', 'email' %></p>
+ 
+<p><label for="users_address">Address</label><br/>
+<%= text_area 'users', 'address' %></p>
+ 
+<p><label for="users_ftp_username">Ftp username</label><br/>
+<%= text_field 'users', 'ftp_username' %></p>
+ 
+<p><label for="users_ftp_password">Ftp password</label><br/>
+<%= password_field 'users', 'ftp_password' %></p>
+ 
+<p><label for="users_folder">Folder</label><br/>
+<%= text_field 'users', 'folder' %></p>
+ 
+<p><label for="users_active">Active</label><br/>
+<%= text_field 'users', 'active' %></p>
+ 
+<p><label for="users_ftp_ipaddress">Ftp ipaddress</label><br/>
+<%= text_field 'users', 'ftp_ipaddress' %></p>
+ 
+<p><label for="users_plan">Plan</label><br/>
+<%= text_field 'users', 'plan' %></p>
+ 
+<p><label for="users_remember_token">Remember token</label><br/>
+<%= text_field 'users', 'remember_token' %></p>
+ 
+<p><label for="users_remember_token_expires_at">Remember token expires at</label><br/>
+<%= datetime_select 'users', 'remember_token_expires_at' %></p>
+ 
+<p><label for="users_publish">Publish</label><br/>
+<%= text_field 'users', 'publish' %></p>
+ 
+<p><label for="users_office_key">Office key</label><br/>
+<%= text_field 'users', 'office_key' %></p>
+ 
+<p><label for="users_listings">Listings</label><br/>
+<%= text_field 'users', 'listings' %></p>
+ 
+<p><label for="users_created_at">Created at</label><br/>
+<%= datetime_select 'users', 'created_at' %></p>
+ 
+<p><label for="users_updated_at">Updated at</label><br/>
+<%= datetime_select 'users', 'updated_at' %></p>
+<!--[eoform:users]-->

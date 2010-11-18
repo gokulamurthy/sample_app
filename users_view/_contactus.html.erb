@@ -1,0 +1,8 @@
+<div id='textcontent'>
+  <iframe src='http://c21wwcrest.idx.net/c21_contact_agent.php?<%= { :cid => current_user.company_id, :mode => (current_site.template.for_office? ? "office" : "agents"), :office_id => current_user.office_id, :agent_id => current_user.agent_id }.to_query -%>' scrolling='auto' width='513' height='650' frameborder='0' margin='0'></iframe>
+  <?php $userid = <%= current_user.php_str :id %>; ?>
+  <br/>
+  <?php $toemail = <%= current_user.user_detail.php_str :email %>; ?>
+  <br/>
+  <?php include_once('tools/contactus.php'); ?>
+</div>

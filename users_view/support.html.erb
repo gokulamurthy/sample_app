@@ -1,0 +1,66 @@
+<% content_for :head do %>
+  <script type="text/javascript" src="/javascripts/contactus_validation.js"></script>
+<% end %>
+ 
+<div id='user_form_container'>
+  <% if params[:support] == 'success' %>
+    <div style="color:#FF6600; padding:80px 40px 20px 20px; font: large Arial, Helvetica, sans-serif; height:210px; text-align:center;" align="center">Thank you for writing to us. Our support team will respond to you as soon as possible.</div>
+  <% else %>
+    <form method="post" action="sendsupport" name="support" onsubmit="return validateForm()">
+      <table width="500" border="0" align="center" cellpadding="0" cellspacing="0" id="user_form">
+        <tr height="15">
+          <td colspan="2"></td>
+        </tr>
+        <tr height="30">
+          <td colspan="2" valign="center" align="center" >
+            <% if flash[:notice] %>
+              <span style="color:#800000; font-weight:bold; text-align: center;"><%= flash[:notice] %></span>
+          <% end %> </td>
+        </tr>
+        <tr height="15">
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td height="26" colspan="2" valign="middle" class="tab_heading">Contact Us</td>
+        </tr>
+        <tr><td colspan="2"><img src="/images/spacer.gif" width="5" height="2" alt="" /></td></tr>
+ 
+        <tr>
+          <td height="20" colspan="2" align="right" valign="top"><span class="tab_text_bold">Fields marked with </span><span class="star"> * </span> <span class="tab_text_bold">are mandatory</span></td>
+        </tr>
+        <tr>
+          <td width="170" height="28" valign="top"><span class="tab_text">Email Address</span><span class="star"> * </span></td>
+          <td width="330" height="28" valign="middle"><%= text_field 'support', 'email' , :value => current_user.email%></td>
+        </tr>
+        <tr>
+          <td height="28" valign="top"><span class="tab_text">Subject</span><span class="star"> * </span></td>
+          <td height="28" valign="middle"><%= text_field 'support', 'subject' %></td>
+        </tr>
+        <tr>
+          <td height="28" valign="top"><span class="tab_text" valign="top">Suggestions
+          or Comments </span><span class="star"> * </span></td>
+          <td valign="middle"><%= text_area 'support', 'problem', :rows => 5, :cols => 23 %></td>
+        </tr>
+        <tr>
+          <td height="20" colspan="2" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><span class="tab_text_bold">Fields marked with </span><span class="star"> * </span> <span class="tab_text_bold">are mandatory</span></td>
+        </tr>
+        <tr>
+          <td height="20" colspan="2" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="22" valign="top" colspan="2" align="center"><%= image_tag "/images/spinnerwhite.gif", :id => 'white_spinner', :style => 'display:none' %>&nbsp;
+          <b><%= submit_tag "SAVE", :class => "save" %>&nbsp;or&nbsp;<input type=reset class='reset' value="RESET" ></b></td>
+        </tr>
+        <tr>
+          <td height="21" colspan="3" valign="top"> <input type="hidden" id="error" value="<%=@error%>" ></td>
+        </tr>
+      </table>
+    </form>
+    <script type="text/javascript">
+      document.getElementById('support_email').focus();
+    </script>
+  <% end %>
+</div>

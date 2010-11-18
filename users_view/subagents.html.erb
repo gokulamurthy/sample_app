@@ -1,0 +1,69 @@
+<% content_for :head do %>
+  <script type="text/javascript" src="/javascripts/validate2.js"></script>
+<% end %>
+ 
+<div id='user_form_container'>
+  <% form_for :user, current_user, :url => {:action => 'addagents'} do |f| %>
+    <table width="65%" border="0" align="center" cellpadding="0" cellspacing="0" id='user_form'>
+      <tr>
+        <td height="15" colspan="3"><input type="image" src="/images/spacer.gif" id="message" style="outline:none;width:0px;height:0px;" /></td>
+      </tr>
+      <% if flash[:subagent_notice] && flash[:subagent_notice]!='' %>
+      <tr class="errdiv">
+        <td height="25" colspan="3" valign="bottom"><center><div id="notice"><font color="#800000"><b><%= flash[:subagent_notice] %></b></font></div></center></td>
+      </tr>
+      <% end %>
+       <tr>
+      <td colspan="3" height="26">&nbsp;</td>  
+      </tr>
+      <tr>
+        <td width="20%" height="26" valign="middle" class="tab_heading">Add Agent </td>
+        <td width="15%"></td>
+        <td width="65%"></td>
+      </tr>
+      <tr><td colspan="3" bgcolor="#999999"><img src="/images/spacer.gif" width="5" height="2" alt="" /></td></tr>
+      <tr>
+        <td height="10" colspan="3"></td>
+      </tr>
+      <tr>
+      <td colspan="3" height="26">The CREST Agent Key information is available from your Broker or Office Administrator.<br/>Please enter below the eight digit Crest Agent Key of your partner. <br/> (Ex: Your eight digit Crest Agent Key is: <%= current_user.agent_id%> )</td>  
+      </tr>
+       <tr>
+      <td colspan="3" height="26">&nbsp;</td>  
+      </tr>
+      <%i=1%>
+      <%if !current_user.sub_agents.nil? && current_user.sub_agents.length != 0 %>
+       <% current_user.sub_agents.each do|item| %>
+        <tr>
+        <td height="28"><span class="tab_text"> Partner Agent <%= i.to_s%> : </span></td><td />
+        <td height="28" valign="middle" >
+          <input type="text" onblur="extractNumber(this,2,true);" onkeyup="extractNumber(this,2,true);" onkeypress="return blockNonNumbers(this, event, true, true);" name="subagents_<%= i.to_s %>" value="<%= item.sub_agent_id%>"></td>
+        </tr>
+        <%i=i+1%>
+        <%end%>
+      <%else%>
+        <%4.times do%>
+      <tr>  
+         <td height="28" ><span class="tab_text"> Partner Agent <%= i.to_s%> :</span></td><td />
+         <td height="28" valign="middle" ><input type="text" onblur="extractNumber(this,2,true);" onkeyup="extractNumber(this,2,true);" onkeypress="return blockNonNumbers(this, event, true, true);" name="subagents_<%= i.to_s%>" ></td>
+        </tr>
+      <%i=i+1%>
+      <%end%>
+      <%end%>
+      <input type="hidden" name="no_of_agents" value="4" />
+      <tr>
+      <td colspan="3" height="26" >&nbsp;</td>  
+      </tr>
+      <tr>
+        <td /><td valign="top" colspan="2" align="left"><b><%= submit_tag "SUBMIT", :class => "save" %>&nbsp;or&nbsp;<input type=reset class='reset' value="RESET" ></b></td>
+      </tr>
+      <tr>
+        <td height="21" colspan="2" valign="top"> </td>
+        <td ><input type="hidden" id="error" value="<%=@error%>" ></td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+<script type="text/javascript">
+document.getElementById('message').focus();
+</script>

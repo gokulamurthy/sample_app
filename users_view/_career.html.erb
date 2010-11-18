@@ -1,0 +1,22 @@
+<div id='textcontent'>
+  <table border=0 width=513>
+    <tr>
+      <td valign=top>
+        <h1 style='color:#FDCD35;font-family:Tahoma;font-style:normal;font-variant:normal;font-weight:bold;line-height:normal;font-size:large;display:inline;'>
+          Careers
+        </h1>
+        <br/>
+        <img src="/images/horizontal_line.gif" width="512" height="2"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <iframe src='/careerpage.html?<%= { :dba => current_user.user_detail.office_name, :email => current_user.user_detail.email, :mode => (current_site.template.for_office? ? "office" : "agents") }.to_query %>' width='530' height='600' frameborder='0' margin='0'></iframe>
+        <div style='display:none;'>
+          <? if($_REQUEST['s'] == 1)
+echo '<script>alert(\"Thank you for contacting us\")</script>'; ?>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

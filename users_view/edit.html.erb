@@ -1,0 +1,84 @@
+<div id='user_form_container'>
+  <% form_for current_user, :url => {:action => 'update'} do |f| %>
+    <table width="500" border="0" align="center" cellpadding="0" cellspacing="0" id="user_form">
+      <tr>
+        <td height="15" colspan="5"><input type="image" src="/images/spacer.gif" id="message" style="outline:none;width:0px;height:0px;" /></td>
+      </tr>
+      <tr>
+        <td colspan="5" valign="top">
+        <% if flash[:message] %>
+            <center><div id="notice"><font color="#800000"><b><%= flash[:message] %></b></font></div></center><br>
+        <% end %> </td>
+      </tr>
+      <tr>
+        <td height="15" colspan="5"></td>
+      </tr>
+      <tr>
+        <td height="26" valign="middle" class="tab_heading" colspan="4">Customer Details</td>
+      </tr>
+      <tr><td colspan="4"><img src="/images/spacer.gif" width="5" height="2" alt="" /></td></tr>
+      <tr><td colspan="4"><%= error_messages_for 'user' %></td></tr>
+      <tr>
+        <td colspan="4" align="right" valign="top"><span class="tab_text_bold">Fields marked with </span><span class="star"> * </span> <span class="tab_text_bold">are mandatory</span></td>
+      </tr>
+      <tr>
+        <td height="27" colspan="2" valign="middle"><span class="tab_text">User Name </span><span class="star"> * </span></td>
+        <td width="65%" height="27" colspan="2" valign="middle"><span class="tab_text"><%= current_user.name %></span></td>
+      </tr>
+      <tr>
+        <td height="27" colspan="2" valign="middle"><span class="tab_text">First Name</span><span class="star"> * </span></td>
+        <td height="27" colspan="2" valign="middle"><%= f.text_field 'fname', :tabindex => "1" %></td>
+      </tr>
+      <tr>
+        <td height="27" colspan="2" valign="middle"><span class="tab_text">Last Name</span><span class="star"> * </span></td>
+        <td height="27" colspan="2" valign="middle"><%= f.text_field 'lname', :tabindex => "2" %></td>
+      </tr>
+      <tr>
+        <td height="27" colspan="2" valign="middle"><span class="tab_text" for="user_off_name">Office Name</span><span class="star"> * </span></td>
+        <td height="27" colspan="2" valign="middle"><%= f.text_field 'off_name', :tabindex => "3" %></td>
+      </tr>
+      <tr>
+        <td height="27" colspan="3" valign="middle"><span class="smalltext">( Office name will be displayed in your Web site )</span></td>
+      </tr>
+      <tr>
+        <td height="27" colspan="2" valign="middle"><span class="tab_text">Phone</span><span class="star"> * </span></td>
+        <td height="27" colspan="2" valign="middle"><%= f.text_field 'phone', :tabindex => "4" %></td>
+      </tr>
+      <tr>
+        <td height="27" colspan="2" valign="middle"><span class="tab_text">Fax </span></td>
+        <td height="27" colspan="2" valign="middle"><%= f.text_field 'fax', :tabindex => "5" %></td>
+      </tr>
+      <tr>
+        <td height="27" colspan="2" valign="middle"><%= hidden_field 'usr','old_email', :value=>current_user.user_detail.email%>
+          <span class="tab_text">Email </span><span class="star"> * </span></td>
+        <td height="27" colspan="2" valign="middle"><%= f.text_field 'email',:value=>current_user.user_detail.email, :tabindex => "6" %></td>
+      </tr>
+      <tr>
+        <td height="27" colspan="2" valign="middle"><span class="tab_text">Address</span><span class="star"> * </span></td>
+        <td height="27" colspan="2" valign="middle"><%= f.text_area 'address', :rows => 5, :cols => 23, :tabindex => "7" %></td>
+      </tr>
+      <tr>
+        <td height="20" colspan="3" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top" colspan="4"><b><%= submit_tag "SAVE", :class => "save" %>&nbsp;or&nbsp;<input type=reset class='reset' value="RESET" ></b></td>
+      </tr>
+      <tr>
+        <td height="21" colspan="4" valign="top"></td>
+      </tr>
+      <tr>
+        <td colspan="4" height="27" valign="middle" class="click"><span class="tab_text">Click here to</span> <%= link_to "Change your Password", changePassword_users_path, :popup => ['new_window', 'left=220,top=200,height=200,width=425'] %></td>
+      </tr>
+      <tr>
+        <td height="21" colspan="4" valign="top"></td>
+      </tr>
+      <input id="user_ftp_ipaddress" name="user[ftp_ipaddress]" type="hidden" value="<%= current_user.ftp_ipaddress %>" />
+      <input id="user_ftp_username" name="user[ftp_username]" type="hidden" value="<%= current_user.ftp_username %>" />
+      <input id="user_folder" name="user[folder]" type="hidden" value="<%= current_user.folder %>" />
+ 
+    </table>
+  <% end %>
+</div>
+<script type="text/javascript">
+document.getElementById('message').focus();
+</script>
